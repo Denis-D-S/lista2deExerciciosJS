@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 5</title>
+</head>
+<body>
+    <h2>Tabela de Produtos: </h2>
+    <table border=1>
+        <tr>
+            <td>Código</td>
+            <td>Produto</td>
+            <td>Preço Unitário (R$)</td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td>Cachorro Quente</td>
+            <td>4.80</td>
+        </tr>
+        <tr>
+            <td>101</td>
+            <td>Pastel</td>
+            <td>3.50</td>
+        </tr>
+        <tr>
+            <td>102</td>
+            <td>Pastel com Ovo</td>
+            <td>5.20</td>
+        </tr>
+        <tr>
+            <td>103</td>
+            <td>Hamburguer</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>104</td>
+            <td>XBurguer</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>105</td>
+            <td>Refrigerante</td>
+            <td>4.75</td>
+        </tr>
+    </table>
+
+    <br>
+
+    <div>
+        <label>Insira qual produto você deseja (nome deve ser exatamente igual ao da tabela):</label>
+        <input type="text" id="produtoDesejado"><br><br>
+
+        <label>Insira a quantidade desejada deste produto:</label>
+        <input type="text" id="quantidadeDesejada"><br><br>
+
+        <button type="button" onclick="getInputValue();">Enviar valor</button>
+    </div>
+
+    <br>
+    <div>Abaixo, quanto você deve pagar em R$:  </div>
+    <div style="font-size: 40px;" id="resultado"></div>
+
+    <script>
+
+        var arrayUsuario = [];
+
+        function getInputValue(){
+            var inputVal1 = document.getElementById("produtoDesejado").value;
+            var inputVal2 = document.getElementById("quantidadeDesejada").value;
+            arrayUsuario.push(inputVal1);
+            arrayUsuario.push(inputVal2); //acabamos de povoar o arrayUsuario com 2 posições, 2 valores, na posição 0 e posição 1
+
+            console.log(arrayUsuario);
+            return arrayUsuario;
+        }
+
+        var tempfunc = getInputValue;  
+
+        window.getInputValue = function(getInputValue) {  
+
+            tempfunc();
+
+            var preco;
+
+            if(arrayUsuario[0] == "Cachorro Quente"){
+                preco = 4.80;
+            }else if(arrayUsuario[0] == "Pastel"){
+                preco = 3.50;
+            }else if(arrayUsuario[0] == "Pastel com Ovo"){
+                preco = 5.20;
+            }else if(arrayUsuario[0] == "Hamburguer"){
+                preco = 6;
+            }else if(arrayUsuario[0] == "XBurguer"){
+                preco = 6;
+            }else if(arrayUsuario[0] == "Refrigerante"){
+                preco = 4.75;
+            }
+
+            var resposta = preco * arrayUsuario[1]; //a posição 1 do array é a quantidade do produto que o usuário quer
+            var resultado = document.getElementById("resultado");
+            resultado.innerHTML = resposta;
+
+        }
+        
+    </script>
+
+</body>
+</html>
